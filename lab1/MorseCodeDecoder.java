@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.HashSet;
 
 public class MorseCodeDecoder implements TextConverter {
     private static MorseToCharTable table;
@@ -9,8 +10,10 @@ public class MorseCodeDecoder implements TextConverter {
 
     @Override
     public String convert(String text) {
-        String wordsDelimiter = table.getWordsDelimiter();
-        String lettersDelimiter = table.getLetterDelimiter();
+        String wordsDelimiter = MorseCodeTable.getWordsDelimiter();
+        String lettersDelimiter = MorseCodeTable.getLetterDelimiter();
+
+        HashSet<String> unknownCodes = new HashSet<String>();
         StringBuilder convertedText = new StringBuilder();
         String[] words = text.split(wordsDelimiter, -1);
         for (int i = 0; i < words.length; i++) {
@@ -20,7 +23,9 @@ public class MorseCodeDecoder implements TextConverter {
                     if (character != null) {
                         convertedText.append(character);
                     } else if (letter.length() != 0) {
-                        System.err.println("Unknown morse code : " + letter);
+                        if (unknownCodes.add(letter)) {
+                            System.err.println("Unknown morse code : " + letter);
+                        }
                     }
                 }
             }
