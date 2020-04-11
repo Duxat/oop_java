@@ -1,0 +1,10 @@
++=stackcalc.commands.arithmetics.AddCommand
+SQRT=stackcalc.commands.arithmetics.SqrtCommand
+*=stackcalc.commands.arithmetics.MulCommand
+/=stackcalc.commands.arithmetics.DivCommand
+-=stackcalc.commands.arithmetics.SubCommand
+POP=stackcalc.commands.PopCommand
+PUSH=stackcalc.commands.PushCommand
+PRINT=stackcalc.commands.PrintCommand
+\#=stackcalc.commands.CommentCommand
+DEFINE=stackcalc.commands.DefineCommand
